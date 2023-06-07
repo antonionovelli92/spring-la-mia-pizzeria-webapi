@@ -49,5 +49,21 @@ public class PizzaService {
                 .orElseThrow(() -> new IllegalArgumentException("Pizza non trovata con ID: " + pizzaId));
     }
 
+//    Cose aggiunte
+    public List<Pizza> filterPizzeByTitolo(String filter) {
+        return pizzaRepository.findByNomeContainingIgnoreCase(filter);
+    }
+
+    public Pizza createPizza(Pizza pizza) {
+        return pizzaRepository.save(pizza);
+    }
+
+    public Pizza updatePizza(Pizza pizza) {
+        return pizzaRepository.save(pizza);
+    }
+
+    public void deletePizza(int id) {
+        pizzaRepository.deleteById(id);
+    }
 
 }
