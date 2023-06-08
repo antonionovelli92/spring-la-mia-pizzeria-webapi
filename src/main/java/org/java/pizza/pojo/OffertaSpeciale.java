@@ -11,6 +11,8 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class OffertaSpeciale {
     @Id
@@ -19,6 +21,7 @@ public class OffertaSpeciale {
 
     @ManyToOne
     @JoinColumn(name = "pizza_id")
+    @JsonBackReference
     private Pizza pizza;
 
     @NotNull(message = "La data di inizio è obbligatoria")

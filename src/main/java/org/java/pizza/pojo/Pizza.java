@@ -13,6 +13,9 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Pizza {
     @Id
@@ -37,9 +40,11 @@ public class Pizza {
     @JoinTable(name = "pizza_ingrediente",
                joinColumns = @JoinColumn(name = "pizza_id"),
                inverseJoinColumns = @JoinColumn(name = "ingrediente_id"))
+    @JsonIgnore
     private List<Ingrediente> ingredienti;
 
     @OneToMany(mappedBy = "pizza")
+    @JsonManagedReference
     private List<OffertaSpeciale> offerteSpeciali;
 
     public Pizza() {
